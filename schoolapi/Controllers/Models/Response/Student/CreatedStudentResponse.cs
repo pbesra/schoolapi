@@ -16,17 +16,17 @@ namespace schoolapi.Controllers.Models.Response.Student
 
         public string LastName { get; set; }
 
-        public string DateOfBrith { get; set; }
+        public string DateOfBirth { get; set; }
 
-        public string ContactNumber { get; set; }
+        public string Contact { get; set; }
 
         public string Email { get; set; }
         public bool HasGuardian { get; set; }
         public CreateStudentParentsRequest Parents { get; set; }
-        public List<CreateStudentAddressRequest> Addresses { get; set; }
+        public IEnumerable<CreateStudentAddressRequest> Addresses { get; set; }
         public CreateStudentGuardianRequest? Guardian { get; set; }
 
         [DisplayName("MetaData")]
-        public List<ResourceLink> _MetaData { get; set; }
+        public IEnumerable<ResourceLink> _MetaData { get; set; }
     }
 }

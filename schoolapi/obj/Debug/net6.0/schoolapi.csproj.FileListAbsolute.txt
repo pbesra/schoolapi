@@ -1,6 +1,7 @@
 C:\Users\Prakash.Besra\projects\schoolapi\schoolapi\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\Prakash.Besra\projects\schoolapi\schoolapi\bin\Debug\net6.0\appsettings.json
-C:\Users\Prakash.Besra\projects\schoolapi\schoolapi\bin\Debug\net6.0\Infrasctructure\ApiSettings\endpointsSettings\studentEndpoints.json
+C:\Users\Prakash.Besra\projects\schoolapi\schoolapi\bin\Debug\net6.0\solution-items\appsettings-copy.Development.json
+C:\Users\Prakash.Besra\projects\schoolapi\schoolapi\bin\Debug\net6.0\solution-items\appsettings-copy.json
 C:\Users\Prakash.Besra\projects\schoolapi\schoolapi\bin\Debug\net6.0\schoolapi.exe
 C:\Users\Prakash.Besra\projects\schoolapi\schoolapi\bin\Debug\net6.0\schoolapi.deps.json
 C:\Users\Prakash.Besra\projects\schoolapi\schoolapi\bin\Debug\net6.0\schoolapi.runtimeconfig.json
@@ -77,5 +78,3 @@ C:\Users\Prakash.Besra\projects\schoolapi\schoolapi\obj\Debug\net6.0\refint\scho
 C:\Users\Prakash.Besra\projects\schoolapi\schoolapi\obj\Debug\net6.0\schoolapi.pdb
 C:\Users\Prakash.Besra\projects\schoolapi\schoolapi\obj\Debug\net6.0\schoolapi.genruntimeconfig.cache
 C:\Users\Prakash.Besra\projects\schoolapi\schoolapi\obj\Debug\net6.0\ref\schoolapi.dll
-C:\Users\Prakash.Besra\projects\schoolapi\schoolapi\bin\Debug\net6.0\solution-items\appsettings-copy.Development.json
-C:\Users\Prakash.Besra\projects\schoolapi\schoolapi\bin\Debug\net6.0\solution-items\appsettings-copy.json

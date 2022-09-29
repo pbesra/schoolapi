@@ -8,7 +8,7 @@
 
         public string MotherName { get; set; }
 
-        public string ContactNumber { get; set; }
+        public string Contact { get; set; }
         public string Email { get; set; }
     }
 }

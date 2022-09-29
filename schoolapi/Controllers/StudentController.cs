@@ -6,7 +6,6 @@ using schoolapi.Controllers.Constants;
 using schoolapi.Controllers.Models.Request;
 using schoolapi.Controllers.Models.Response.Student;
 using schoolapi.Entity;
-using schoolapi.Infrasctructure.ApiSettings;
 
 namespace schoolapi.Controllers
 {
@@ -14,23 +13,19 @@ namespace schoolapi.Controllers
     [Route(ApiConstants.API_VERSION)]
     public class StudentController : ControllerBase
     {
-        public IAppConfiguration _appConfiguration { get; }
-        public IStudentService _studentService { get; }
-        public IMapper _mapper { get; }
-        public IStudentMetaData _studentMetaData { get; }
+        private readonly IStudentService _studentService;
+        private readonly IMapper _mapper;
 
-        public StudentController(IStudentService studentService, IMapper mapper, IStudentMetaData studentMetaData)
+        public StudentController(IStudentService studentService, IMapper mapper)
         {
             _studentService = studentService;
             _mapper = mapper;
-            _studentMetaData = studentMetaData;
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateAsync([FromBody] CreateStudentRequest createStudentRequest)
         {
             CreatedStudentResponse response = await _studentService.InsertAsync(createStudentRequest);
-            response._MetaData = _studentMetaData.GetResources();
             return Created($"", response);
         }
         [HttpGet]

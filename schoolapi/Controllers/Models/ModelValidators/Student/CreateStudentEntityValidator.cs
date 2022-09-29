@@ -147,14 +147,14 @@ namespace schoolapi.Controllers.Models.ModelValidators.Student
             RuleFor(o => o)
                 .Must(o =>
                 {
-                    if (o.HasGuardian && o.Guardian?.ContactNumber?.Trim()?.Length <= 0)
+                    if (o.HasGuardian && o.Guardian?.Contact?.Trim()?.Length <= 0)
                     {
                         return false;
                     }
                     return true;
                 })
-                .WithName("Guardian?.ContactNumber")
-                .WithMessage("Guardian ContactNumber is a required field.");
+                .WithName("Guardian?.Contact")
+                .WithMessage("Guardian Contact is a required field.");
         }
     }
 }

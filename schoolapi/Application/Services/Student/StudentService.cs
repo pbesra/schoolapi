@@ -11,9 +11,9 @@ namespace schoolapi.Application.Services.Student
     {
         public IStudentRepository _studentRepository { get; }
         private readonly IMapper _mapper;
-        private readonly IStudentMetaData _studentMetaData;
+        private readonly IMetaData<CreatedStudentResponse, StudentMetaData> _studentMetaData;
 
-        public StudentService(IStudentRepository studentRepository, IMapper mapper, IStudentMetaData studentMetaData)
+        public StudentService(IStudentRepository studentRepository, IMapper mapper, IMetaData<CreatedStudentResponse, StudentMetaData> studentMetaData)
         {
             _studentRepository = studentRepository;
             _mapper = mapper;
@@ -26,11 +26,7 @@ namespace schoolapi.Application.Services.Student
 
             var response = await _studentRepository.InsertAsync(entity);
             var filteredRes = _mapper.Map<StudentEntity, CreatedStudentResponse>(response);
-            _studentMetaData.AddResources(new List<ResourceLink> {
-                new ResourceLink { Href = $"Student/{filteredRes?.Id}", Rel = "UpdateStudent", Type = "PUT" },
-                new ResourceLink { Href = $"Student/{filteredRes?.Id}", Rel = "GetStudent", Type = "GET" },
-                new ResourceLink { Href = $"Student/{filteredRes?.Id}", Rel = "DeleteStudent", Type = "DELETE" }
-            });
+            filteredRes._MetaData = new StudentMetaData().OnResourceCreated(filteredRes).GetResources();
             return filteredRes;
         }
     }

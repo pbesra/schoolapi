@@ -2,6 +2,8 @@ using FluentValidation.AspNetCore;
 using Newtonsoft.Json.Converters;
 using schoolapi.Application.Services.Student;
 using schoolapi.Controllers.ApiMetaData;
+using schoolapi.Controllers.Models.Response.Student;
+using schoolapi.Extensions.ServiceDI;
 using schoolapi.Infrasctructure;
 using schoolapi.Infrasctructure.DatabaseLayer.DbConfig;
 using schoolapi.Infrasctructure.DatabaseLayer.Repositories.Student;
@@ -33,11 +35,9 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader();
         });
 });
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IDBConfig, DbConfig>();
-builder.Services.AddScoped<IStudentRepository, StudentRepository>();
-builder.Services.AddScoped<IStudentService, StudentService>();
-builder.Services.AddScoped<IStudentMetaData, StudentMetaData>();
+
+builder.Services.ServiceInjection();
+
 string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 
