@@ -1,0 +1,9 @@
+{
+  "_link": [
+    {
+      "href": "/students",
+      "type": "GET",
+      "rel": "get_students"
+    }
+  ]
+}
