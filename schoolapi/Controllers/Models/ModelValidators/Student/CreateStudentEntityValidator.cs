@@ -27,7 +27,19 @@ namespace schoolapi.Controllers.Models.ModelValidators.Student
                 .NotEmpty()
                 .WithMessage("DateOfBirth is a required field.")
                 .Must(x => DateTime.TryParse(x, out _))
-                .WithMessage("DateOfBirth is not a valid field.");
+                .WithMessage("DateOfBirth is not a valid field.")
+                .Must(x =>
+                {
+                    DateTime twoYearsAfterDateOfBirth;
+
+                    var isValidDate=DateTime.TryParse(x, out twoYearsAfterDateOfBirth);
+                    if (isValidDate && twoYearsAfterDateOfBirth.AddYears(2) > DateTime.Now)
+                    {
+                        return false;
+                    }
+                    return true;
+                })
+                .WithMessage("Minimum 2 years required");
 
             RuleFor(o => o.Parents)
                 .NotEmpty()
@@ -153,8 +165,22 @@ namespace schoolapi.Controllers.Models.ModelValidators.Student
                     }
                     return true;
                 })
-                .WithName("Guardian?.Contact")
+                .WithName("Guardian.Contact")
                 .WithMessage("Guardian Contact is a required field.");
+
+            RuleFor(o => o)
+                .Must(o =>
+                {
+                    DateTime twoYearsAfterDateOfBirth;
+                    var isValidDate = DateTime.TryParse(o.Guardian?.DateOfBirth, out twoYearsAfterDateOfBirth);
+                    if (o.HasGuardian && isValidDate && twoYearsAfterDateOfBirth.AddYears(2) > DateTime.Now)
+                    {
+                        return false;
+                    }
+                    return true;
+                })
+                .WithName("Guardian.DateOfBirth")
+                .WithMessage("Minimum age is 21 years old.");
         }
     }
 }
